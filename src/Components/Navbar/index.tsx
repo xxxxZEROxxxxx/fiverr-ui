@@ -2,6 +2,12 @@ import { useEffect, useState } from "react";
 
 const Navbar = () => {
   const [active, setActive] = useState(false);
+  const [click, setClick] = useState(false);
+  const carnetUser = {
+    id: 1,
+    name: "alaa",
+    isSeller: true,
+  };
 
   const isActive = () => {
     window.scrollY > 0 ? setActive(true) : setActive(false);
@@ -16,7 +22,9 @@ const Navbar = () => {
 
   return (
     <div
-      className={`${  active ? "bg-white text-black  " : "bg-[#013914] text-white " } 
+      className={`${
+        active ? "bg-white text-black  " : "bg-[#013914] text-white "
+      } 
       flex flex-col items-center  transition-all duration-500 ease-linear	 sticky top-0 `}
     >
       <div className="  flex  justify-between  w-[1200px] py-[20px]  px-0">
@@ -28,16 +36,40 @@ const Navbar = () => {
           <span>Fiverr Business</span>
           <span>Explore</span>
           <span>English</span>
-          <span>Sign in </span>
-          <span>Become a Seller</span>
-          <button className="py-[10px] px-[20px] text-white border border-solid border-white rounded-md  cursor-pointer   hover:bg-green-500 hover:border-green-500 ">
-            Join
-          </button>
+          {!carnetUser && <span>Sign in </span>}
+          {!carnetUser?.isSeller && <span>Become a Seller</span>}
+          {!carnetUser && (
+            <button
+              className={`py-[10px] px-[20px] ${
+                active
+                  ? ""
+                  : "border border-solid border-white rounded-md  cursor-pointer   hover:bg-green-500 hover:border-green-500"
+              }   `}
+            >
+              Join
+            </button>
+          )}
+          {carnetUser && (
+            <div onClick={()=>{setClick((prms)=>!prms)}}  className=" flex items-center gap-3 cursor-pointer relative">
+              <img className="w-8 h-8 rounded-[50%] object-cover" src="https://images.pexels.com/photos/1115697/pexels-photo-1115697.jpeg?auto=compress&cs=tinysrgb&w=160" alt="" />
+              <span>{carnetUser?.name}</span>
+             {click&& <div onClick={(e)=>e.stopPropagation()} className="option  absolute top-12 right-0 p-5 bg-white  border border-[#d3d3d3]  rounded-[10px] flex flex-col  gap-2 text-gray-500 w-[200px] font-light">
+                {carnetUser.isSeller && (
+                  <>
+                    <span>Gigs</span>
+                    <span>Add New Gigs</span>
+                  </>
+                )}
+                <span>Orders</span>
+                <span>Messages</span>
+                <span>Logout</span>
+              </div>}
+            </div>
+          )}
         </div>
       </div>
       {active && (
         <>
-          {" "}
           <hr className="w-full h-0 border-[0.5px] border-solid " />
           <div className="w-[1200px] py-[10px] flex justify-between font-light text-gray-500">
             <span>Test </span>
