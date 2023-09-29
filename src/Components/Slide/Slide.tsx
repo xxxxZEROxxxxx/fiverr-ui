@@ -5,6 +5,7 @@ import { cards } from "../../Data";
 import CatCard from "../CatCard/CatCard";
 import styled from "styled-components";
 
+
 const Slide = () => {
   const settings = {
     dots: false,

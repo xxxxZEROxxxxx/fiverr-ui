@@ -129,7 +129,7 @@ const FeaturesDark = () => {
             <img  className="w-6 h-6" src="./img/check.png" alt="" />
             Manage teamwork and boost productivity with one powerful workspace
           </div>
-          <button className=" bg-[#1dbf73] text-white py-[8px] px-[20px] rounded-[5px]  text-base w-max mb-5">Explore Fiverr Business</button>
+          <button className=" bg-[#1dbf73] active:bg-green-700 text-white py-[8px] px-[20px] rounded-[5px]  text-base w-max mb-5">Explore Fiverr Business</button>
           
         </div>
         <div className="item flex-[3]">
