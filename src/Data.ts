@@ -5,6 +5,13 @@
     img:string,
 }
 
+export type Project= {
+  id: number;
+  img: string;
+  pp: string;
+  cat: string;
+  username: string;
+}
 export const cards = [
     {
       id: 1,

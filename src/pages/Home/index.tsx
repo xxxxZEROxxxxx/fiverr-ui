@@ -1,5 +1,8 @@
+import CatCard from "../../Components/CatCard/CatCard";
 import Featured from "../../Components/Featured";
+import ProCard from "../../Components/ProCard/ProCard";
 import Slide from "../../Components/Slide/Slide";
+import { cards, projects } from "../../Data";
 
 
 
@@ -9,9 +12,19 @@ const Home = () => {
     <div>
       <Featured />
       <TrustedBy />
-      <Slide />
+      <Slide SlidesToScroll={5} SlidesToShow={5} title="Popular services">
+      {cards.map((card) => (
+            <CatCard item={card} key={card.id} />
+          ))}
+      </Slide>
       <Features />
       <FeaturesDark />
+      <div className="bg-gray-100 mt-10"><Slide SlidesToScroll={4} SlidesToShow={4} title="Inspiring work made on Fiverr">
+      {projects.map((project) => (
+            <ProCard item={project} key={project.id} />
+          ))}
+      </Slide></div>
+      
     </div>
   );
 };

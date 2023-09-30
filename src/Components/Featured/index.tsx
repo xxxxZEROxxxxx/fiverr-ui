@@ -22,7 +22,7 @@ const Featured = () => {
           </div>
         </div>
         <div className=" h-full ">
-          <img className="h-[500px] " src="./img/man.png" alt="" />
+          <img className="h-[500px] object-contain " src="./img/man.png" alt="" />
         </div>
       </div>
     </div>

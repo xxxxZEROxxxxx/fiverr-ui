@@ -1,31 +1,36 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { cards } from "../../Data";
-import CatCard from "../CatCard/CatCard";
+
 import styled from "styled-components";
+import React from "react";
 
-
-const Slide = () => {
+type PropSlide={
+  children:React.ReactNode,
+  SlidesToShow:number,
+  SlidesToScroll:number,
+  title:string,
+}
+const Slide = ({children,SlidesToScroll,SlidesToShow,title}:PropSlide) => {
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 5,
-   
-  
+    slidesToShow: SlidesToShow,
+    slidesToScroll: SlidesToScroll,
+
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
   };
   return (
-    <div className="flex  justify-center items-center  py-24  space-x-4 ">
+    <div className="flex  justify-center items-center   py-24  space-x-4 ">
       <div className="w-[1200px] ">
-        <h1 className="text-3xl font-bold text-gray-700 mb-6 ">Popular services</h1>
+        <h1 className="text-3xl font-bold text-gray-700 mb-6 ">
+        {title}
+        </h1>
         <Slider {...settings}>
-          {cards.map((card) => (
-            <CatCard item={card} key={card.id} />
-          ))}
+          {children}
+          
         </Slider>
       </div>
     </div>
@@ -44,7 +49,6 @@ const NextArrow = styled.div`
     background-color: #ff0000;
   }
 `;
-
 
 const PrevArrow = styled.div`
   width: 20px;

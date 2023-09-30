@@ -9,6 +9,8 @@ function App() {
     <>
      <Navbar/>
      <Outlet/>
+     
+     <hr  className='mt-10'/>
      <Footer/>
     </>
   )
